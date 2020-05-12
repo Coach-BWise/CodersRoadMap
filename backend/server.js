@@ -10,10 +10,16 @@ const app = express();
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/public"));
-  app.use(cors());
 }
+//needed to configure CORS policy
+app.use(cors());
 
-const MongoDB_URI = process.env.MONGODB_URI || "mongodb://localhost/roadMap";
+// Parse request body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//connect to cloud database
+const MongoDB_URI = process.env.ATLAS_URI;
 mongoose.connect(MongoDB_URI, { useNewUrlParser: true, useCreateIndex: true });
 
 const connection = mongoose.connection;
@@ -22,7 +28,7 @@ const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Successfully connected to MongoDB");
 });
-// Send every request to the React app
+
 // Define any API routes before this runs
 const usersRouter = require("./routes/users");
 const unitRouter = require("./routes/units");
@@ -35,5 +41,5 @@ app.get("*", function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`==> API server now on port: ${PORT} <==`);
 });
