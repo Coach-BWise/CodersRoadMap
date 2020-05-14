@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import UserSignUp from "./pages/UserSignUp";
+import UserLogin from "./pages/UserLogin";
+import Dashboard from "./pages/Dashboard";
+
 class App extends Component {
-  render() {
+  render = () => {
     return (
       <Router>
-        <Navbar />
-        <br />
-        {/* 
-        
-        <Route path="/" exact component={UnitList} />
-        <Route path="/edit/:id" exact component={EditUnit} />
-        <Route path="/create" exact component={UploadUnit} />
-        <Route path="/user" exact component={CreateUser} /> */}
+        <Switch>
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/add" component={UserSignUp} />
+          <Route exact path="/login" component={UserLogin} />
+        </Switch>
       </Router>
     );
-  }
+  };
 }
 
 export default App;
