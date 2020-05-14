@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import NavBar from "../Navbar";
-import "../Dashboard/style.css";
+import "../HTMLActivites1";
 
 const useStyles = makeStyles({
   root: {
@@ -31,7 +31,7 @@ export default function ImgMediaCard() {
         }}
         className="rowC"
       >
-        {/* HTML Card */}
+        {/* Activity 1 Card */}
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
@@ -43,10 +43,7 @@ export default function ImgMediaCard() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                HTML
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                HTML is the standard markup language for Web pages.
+                Activity 1
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -55,20 +52,20 @@ export default function ImgMediaCard() {
               marginTop: 62,
             }}
           >
-            <Button size="small" color="primary" href="/html-activites">
-              Go To Activites
+            <Button size="small" color="primary" href="/html-activites-1">
+              Begin
             </Button>
             <Button
               size="small"
               color="primary"
-              href="https://www.w3schools.com/html/default.asp"
+              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
               target="_blank"
             >
-              Learn More
+              Help
             </Button>
           </CardActions>
         </Card>
-        {/* CSS Card */}
+        {/* Activity 2 Card */}
         <Card
           className={classes.root}
           style={{
@@ -78,77 +75,71 @@ export default function ImgMediaCard() {
           <CardActionArea>
             <CardMedia
               component="img"
-              alt="Contemplative Reptile"
+              alt="html image"
               height="140"
-              image="https://www.tutorialrepublic.com/lib/images/css-illustration.png"
-              title="Contemplative Reptile"
+              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
+              title="html image"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                CSS
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                CSS is a language that describes the style of an HTML document.
+                Activity 2
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions
             style={{
-              marginTop: 40,
+              marginTop: 62,
             }}
           >
-            <Button size="small" color="primary" href="/css-activites">
-              Go To Activites
+            <Button size="small" color="primary" href="/html-activites-1">
+              Begin
             </Button>
             <Button
               size="small"
               color="primary"
-              href="https://www.w3schools.com/css/default.asp"
+              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
               target="_blank"
             >
-              Learn More
+              Help
             </Button>
           </CardActions>
         </Card>
-        {/* JS Card */}
+        {/* Activity 3 Card */}
         <Card
           className={classes.root}
           style={{
-            marginLeft: 30,
+            marginLeft: 35,
           }}
         >
           <CardActionArea>
             <CardMedia
               component="img"
-              alt="Contemplative Reptile"
+              alt="html image"
               height="140"
-              image="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
-              title="Contemplative Reptile"
+              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
+              title="html image"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Javascript
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                JavaScript is the programming language of HTML and the Web.
+                Activity 3
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions
             style={{
-              marginTop: 40,
+              marginTop: 62,
             }}
           >
-            <Button size="small" color="primary" href="/js-activites">
-              Go To Activites
+            <Button size="small" color="primary" href="/html-activites-1">
+              Begin
             </Button>
             <Button
               size="small"
               color="primary"
-              href="https://www.w3schools.com/js/default.asp"
+              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
               target="_blank"
             >
-              Learn More
+              Help
             </Button>
           </CardActions>
         </Card>
