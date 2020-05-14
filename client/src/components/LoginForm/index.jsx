@@ -22,7 +22,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        CodersRoadMap
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -153,7 +153,7 @@ class LoginForm extends Component {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/ad" variant="body2">
+              <Link href="/add" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

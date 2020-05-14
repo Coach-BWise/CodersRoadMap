@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import UserDetails from "../UserDetails";
-import Success from "../Success";
 import API from "../../utils/API";
 import Dialog from "@material-ui/core/Dialog";
 import AppBar from "@material-ui/core/AppBar";
@@ -10,8 +8,6 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
