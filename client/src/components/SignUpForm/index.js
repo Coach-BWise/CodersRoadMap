@@ -54,16 +54,12 @@ export class UserForm extends Component {
     super(props);
 
     this.state = {
-      hidden: true,
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       redirect: null,
     };
-
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.toggleShow = this.toggleShow.bind(this);
   }
 
   handleInputChange = (event) => {
@@ -99,7 +95,16 @@ export class UserForm extends Component {
     }
 
     return (
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
         <CssBaseline />
         <div className={useStyles.paper}>
           <Avatar className={useStyles.avatar}>
@@ -181,7 +186,7 @@ export class UserForm extends Component {
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link href="/" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

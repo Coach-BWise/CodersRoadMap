@@ -49,15 +49,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class LoginForm extends Component {
-  state = {
-    hidden: true,
-    email: "",
-    password: "",
-    redirect: null,
-  };
+  constructor() {
+    super();
+    this.state = {
+      hidden: true,
+      email: "",
+      password: "",
+      redirect: null,
+    };
 
-  handlePasswordChange = this.handlePasswordChange.bind(this);
-  toggleShow = this.toggleShow.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -81,26 +84,31 @@ class LoginForm extends Component {
       };
       API.login(userInfo)
         .then((res) => {
+          this.props.updateUser({
+            loggedIn: true,
+            email: res.data.email,
+          });
           this.setState({ redirect: "true" });
         })
         .catch((err) => console.log(err));
     }
   };
 
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value });
-  }
-
-  toggleShow() {
-    this.setState({ hidden: !this.state.hidden });
-  }
-
   render() {
     if (this.state.redirect) {
       return <Redirect to="/dashboard" />;
     }
     return (
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
         <CssBaseline />
         <div className={useStyles.paper}>
           <Avatar className={useStyles.avatar}>
@@ -129,9 +137,9 @@ class LoginForm extends Component {
             margin="normal"
             required
             fullWidth
-            type={this.state.hidden ? "password" : "text"}
+            type="password"
             value={this.state.password}
-            onChange={this.handlePasswordChange}
+            onChange={this.handleInputChange}
             defaultValue={this.state.password}
             name="password"
             label="Password"

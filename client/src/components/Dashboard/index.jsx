@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import NavBar from "../Navbar";
 import "../Dashboard/style.css";
+import API from "../../utils/API";
 
 const useStyles = makeStyles({
   root: {
@@ -16,143 +17,86 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
+class Dashboard extends Component {
+  state = {
+    name: "",
+    description: "",
+    units: [],
+  };
 
-  return (
-    <div>
-      <NavBar />
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-        className="rowC"
-      >
-        {/* HTML Card */}
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="html image"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
-              title="html image"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                HTML
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                HTML is the standard markup language for Web pages.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              marginTop: 62,
-            }}
-          >
-            <Button size="small" color="primary" href="/html-activites">
-              Go To Activites
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.w3schools.com/html/default.asp"
-              target="_blank"
-            >
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
-        {/* CSS Card */}
-        <Card
-          className={classes.root}
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  loadBooks = () => {
+    API.getUnits()
+      .then(
+        (res) => this.setState({ units: res.data, name: "", description: "" }),
+        console.log(this.state.units)
+      )
+      .catch((err) => console.log(err));
+  };
+
+  render() {
+    return (
+      <div>
+        <div
           style={{
-            marginLeft: 35,
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
           }}
+          className="rowC"
         >
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/css-illustration.png"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                CSS
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                CSS is a language that describes the style of an HTML document.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              marginTop: 40,
-            }}
-          >
-            <Button size="small" color="primary" href="/css-activites">
-              Go To Activites
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.w3schools.com/css/default.asp"
-              target="_blank"
+          {this.state.units.map((unit) => (
+            <Card
+              className={useStyles.root}
+              style={{
+                marginLeft: 35,
+                width: 400,
+              }}
             >
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
-        {/* JS Card */}
-        <Card
-          className={classes.root}
-          style={{
-            marginLeft: 30,
-          }}
-        >
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Javascript
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                JavaScript is the programming language of HTML and the Web.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              marginTop: 40,
-            }}
-          >
-            <Button size="small" color="primary" href="/js-activites">
-              Go To Activites
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.w3schools.com/js/default.asp"
-              target="_blank"
-            >
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt={unit.name}
+                  height="100"
+                  image={unit.image}
+                  title={unit.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {unit.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {unit.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary" href={unit.activityLinks}>
+                  Activites
+                </Button>
+                <Button
+                  size="small"
+                  color="primary"
+                  href={unit.link}
+                  target="_blank"
+                >
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default Dashboard;
