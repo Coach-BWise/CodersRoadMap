@@ -1,14 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import NavBar from "../Navbar";
 import "../HTMLActivites1";
+import API from "../../utils/API";
 
 const useStyles = makeStyles({
   root: {
@@ -16,12 +15,24 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
+class HTMLActivites extends Component {
+  state = {
+    name: "",
+    activites: [],
+  };
 
-  return (
-    <div>
-      <NavBar />
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  loadBooks = () => {
+    API.getActivites()
+      .then((res) => this.setState({ activites: res.data, name: "" }))
+      .catch((err) => console.log(err));
+  };
+
+  render() {
+    return (
       <div
         style={{
           position: "absolute",
@@ -31,119 +42,43 @@ export default function ImgMediaCard() {
         }}
         className="rowC"
       >
-        {/* Activity 1 Card */}
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="html image"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
-              title="html image"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Activity 1
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
+        {this.state.activites.map((activity) => (
+          <Card
+            className={useStyles.root}
             style={{
-              marginTop: 62,
+              marginLeft: 35,
+              width: 200,
             }}
           >
-            <Button size="small" color="primary" href="/html-activites-1">
-              Begin
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
-              target="_blank"
-            >
-              Help
-            </Button>
-          </CardActions>
-        </Card>
-        {/* Activity 2 Card */}
-        <Card
-          className={classes.root}
-          style={{
-            marginLeft: 35,
-          }}
-        >
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="html image"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
-              title="html image"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Activity 2
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              marginTop: 62,
-            }}
-          >
-            <Button size="small" color="primary" href="/html-activites-1">
-              Begin
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
-              target="_blank"
-            >
-              Help
-            </Button>
-          </CardActions>
-        </Card>
-        {/* Activity 3 Card */}
-        <Card
-          className={classes.root}
-          style={{
-            marginLeft: 35,
-          }}
-        >
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="html image"
-              height="140"
-              image="https://www.tutorialrepublic.com/lib/images/html-illustration.png"
-              title="html image"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Activity 3
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              marginTop: 62,
-            }}
-          >
-            <Button size="small" color="primary" href="/html-activites-1">
-              Begin
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.youtube.com/watch?v=UB1O30fR-EE"
-              target="_blank"
-            >
-              Help
-            </Button>
-          </CardActions>
-        </Card>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {activity.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                href={activity.activityLinks}
+              >
+                Begin
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                href={activity.helperLink}
+                target="_blank"
+              >
+                Help
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default HTMLActivites;

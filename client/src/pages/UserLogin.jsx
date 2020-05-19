@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 
 class UserLogin extends Component {
   render() {
-    return <LoginForm />;
+    return <LoginForm updateUser={this.updateUser} />;
   }
 }
 
