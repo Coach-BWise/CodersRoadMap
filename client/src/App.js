@@ -8,6 +8,8 @@ import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
 import axios from "axios";
 import NavBar from "./components/Navbar";
+import Courseform from "./components/Courseform";
+
 
 class App extends Component {
   constructor() {
@@ -47,7 +49,11 @@ class App extends Component {
         });
       }
     });
-  }
+  };
+
+  onSubmit = (fields) => {
+    console.log("App comp got: ", fields);
+  };
 
   render = () => {
     return (
@@ -72,6 +78,7 @@ class App extends Component {
               path="/html/1"
               render={() => <Html1 updateUser={this.updateUser} />}
             />
+            <Route exact path="/course" component={Courseform} />
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>
