@@ -1,0 +1,49 @@
+.rowC {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#form1 {
+    font-style: italic;
+    font-weight: bolder;
+    color: black;
+    background-color: lightgray;
+    width: 40%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box; 
+    border: 4px solid #8842d5; 
+}
+
+#form2{
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+    background-color: lightgray;
+    width: 40%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box; 
+    border: 4px solid #8842d5; 
+}
+
+#form3 {
+    font-style: italic;
+    font-weight: bolder;
+    color: black;
+    background-color: lightgray;
+    width: 80%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    border: 4px solid #8842d5;  
+}
+
+#buttons {
+    font-size: larger;
+    width: 20%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;  
+}  
