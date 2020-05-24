@@ -13,4 +13,7 @@ export default {
   getActivites: function () {
     return axios.get("api/activites/html");
   },
+  getUser: function () {
+    return axios.get("api/users/");
+  },
 };

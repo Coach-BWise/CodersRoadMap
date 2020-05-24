@@ -7,6 +7,12 @@ const userSchema = new Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  course: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 userSchema.methods.generateHash = function (password) {

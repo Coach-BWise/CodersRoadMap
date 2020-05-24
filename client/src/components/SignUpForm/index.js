@@ -50,17 +50,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export class UserForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      redirect: null,
-    };
-  }
+  state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    redirect: null,
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;

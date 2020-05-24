@@ -8,19 +8,13 @@ import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
 import axios from "axios";
 import NavBar from "./components/Navbar";
+import API from "./utils/API";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loggedIn: false,
-      email: null,
-    };
-
-    this.getUser = this.getUser.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.updateUser = this.updateUser.bind(this);
-  }
+  state = {
+    loggedIn: false,
+    email: null,
+  };
 
   componentDidMount() {
     this.getUser();
@@ -31,11 +25,10 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get("api/users/").then((response) => {
+    API.getUser().then((response) => {
       console.log(response);
       if (response.data.user) {
-        console.log(response.data.user);
-
+        console.log("user data in app.js " + response.data.user);
         this.setState({
           loggedIn: true,
           email: response.data.email,

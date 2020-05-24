@@ -49,8 +49,54 @@ const activitySeed = [
   },
 ];
 
-db.Activity.remove({})
-  .then(() => db.Activity.collection.insertMany(activitySeed))
+const coursesSeed = [
+  {
+    name: "HTML for Beginners",
+    description:
+      "Intro class to HTML for people with little to no coding experience.",
+    units: [
+      {
+        name: "Unit 1 - HTML Basics",
+        description: "HTML basics",
+        links: "https://www.w3schools.com/html/",
+        activites: [
+          {
+            name: "Activity 1",
+            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+            resources: "https://www.w3schools.com/html/html_basic.asp",
+          },
+          {
+            name: "Activity 1",
+            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+            resources: "https://www.w3schools.com/html/html_basic.asp",
+          },
+        ],
+      },
+      {
+        name: "Unit 2 - CSS Basics",
+        description: "CSS basics",
+        links: "https://www.w3schools.com/css/",
+        activites: {
+          name: "Activity 1",
+          videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+          resources: "https://www.w3schools.com/html/html_basic.asp",
+        },
+      },
+    ],
+    enrolled: [],
+  },
+];
+
+const userSeed = {
+  firstName: "Trevor",
+  lastName: "Handley",
+  email: "test@gmail.com",
+  password: "0215",
+  course: [],
+};
+
+db.User.remove({})
+  .then(() => db.User.collection.insertOne(userSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
