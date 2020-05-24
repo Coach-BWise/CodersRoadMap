@@ -8,7 +8,12 @@ import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
 import axios from "axios";
 import NavBar from "./components/Navbar";
+<<<<<<< HEAD
 import API from "./utils/API";
+=======
+import Courseform from "./components/Courseform";
+
+>>>>>>> b199aa01479193a9b17964ec2c7a43d928964f22
 
 class App extends Component {
   state = {
@@ -40,7 +45,11 @@ class App extends Component {
         });
       }
     });
-  }
+  };
+
+  onSubmit = (fields) => {
+    console.log("App comp got: ", fields);
+  };
 
   render = () => {
     return (
@@ -65,6 +74,7 @@ class App extends Component {
               path="/html/1"
               render={() => <Html1 updateUser={this.updateUser} />}
             />
+            <Route exact path="/course" component={Courseform} />
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>
