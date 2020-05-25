@@ -25,14 +25,13 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadUnits();
   }
 
-  loadBooks = () => {
+  loadUnits = () => {
     API.getUnits()
-      .then(
-        (res) => this.setState({ units: res.data, name: "", description: "" }),
-        console.log(this.state.units)
+      .then((res) =>
+        this.setState({ units: res.data, name: "", description: "" })
       )
       .catch((err) => console.log(err));
   };
@@ -80,7 +79,7 @@ class Dashboard extends Component {
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary" href={unit.activityLinks}>
-                  Activites
+                  Go To Activites
                 </Button>
                 <Button
                   size="small"

@@ -10,11 +10,11 @@ const unitSchema = new Schema(
       unique: true,
       trim: true,
     },
-    helperLink: {
+    videos: {
       type: String,
       required: true,
     },
-    activityLinks: {
+    resources: {
       type: String,
     },
   },

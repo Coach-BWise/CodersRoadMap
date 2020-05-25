@@ -49,18 +49,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      hidden: true,
-      email: "",
-      password: "",
-      redirect: null,
-    };
-
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+  state = {
+    hidden: true,
+    email: "",
+    password: "",
+    redirect: null,
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
