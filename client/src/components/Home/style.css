@@ -1,0 +1,60 @@
+.intro-section h1,
+h2,
+p {
+  color: orange;
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 992px) {
+  .intro-section {
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+.rowC {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4rem;
+}
+
+.pointer {
+  margin-top: -15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-color: rgb(49, 165, 165);
+  height: 200px;
+  margin-bottom: 3rem;
+}
+
+.pointerArrow {
+  position: absolute;
+  border-top: solid 50px;
+  border-left: solid 50px transparent;
+  border-right: solid 50px transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -50px;
+}
+
+.pointerTitle {
+  margin-top: -5em;
+  color: purple;
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: -15px;
+  margin-top: -15px;
+  text-align: center;
+}
+
+.block-title {
+  position: relative;
+}
