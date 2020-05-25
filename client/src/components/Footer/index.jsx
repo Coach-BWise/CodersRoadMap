@@ -40,7 +40,7 @@ class Footer extends Component {
             </div>
 
             <div className="col-md-6 text-center text-lg-right mt-4 mt-md-3">
-              <p>© 2020 Bryan Wise | Travor Handley | Andrea Labis</p>
+              <p>© 2020 Bryan Wise | Trevor Handley | Andrea Labis</p>
             </div>
           </div>
         </div>
