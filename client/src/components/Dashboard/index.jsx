@@ -26,14 +26,13 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadUnits();
   }
 
-  loadBooks = () => {
+  loadUnits = () => {
     API.getUnits()
-      .then(
-        (res) => this.setState({ units: res.data, name: "", description: "" }),
-        console.log(this.state.units)
+      .then((res) =>
+        this.setState({ units: res.data, name: "", description: "" })
       )
       .catch((err) => console.log(err));
   };

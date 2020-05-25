@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const unitSchema = new Schema(
+const courseSchema = new Schema(
   {
     name: {
       type: String,
@@ -14,14 +14,10 @@ const unitSchema = new Schema(
       type: String,
       required: true,
     },
-    links: {
-      type: String,
-      required: true,
-    },
-    activites: [
+    units: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Activity",
+        ref: "Unit",
       },
     ],
   },
@@ -30,6 +26,6 @@ const unitSchema = new Schema(
   }
 );
 
-const Unit = mongoose.model("Unit", unitSchema);
+const Course = mongoose.model("Course", courseSchema);
 
-module.exports = Unit;
+module.exports = Course;
