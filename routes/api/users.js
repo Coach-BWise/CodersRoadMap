@@ -14,7 +14,6 @@ router
 
 router.get("/", (req, res, next) => {
   if (req.user) {
-    console.log("User:" + req.user.firstName);
     return res.json({ user: req.user });
   } else {
     return res.json({ user: null });

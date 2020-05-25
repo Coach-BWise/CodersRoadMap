@@ -18,10 +18,12 @@ const unitSchema = new Schema(
       type: String,
       required: true,
     },
-    activites: {
-      type: Schema.Types.ObjectId,
-      ref: "Activity",
-    },
+    activites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Activity",
+      },
+    ],
   },
   {
     timestamps: true,

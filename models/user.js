@@ -7,7 +7,8 @@ const userSchema = new Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  course: [
+  isInstructor: { type: Boolean, default: false },
+  isEnrolled: [
     {
       type: Schema.Types.ObjectId,
       ref: "Course",

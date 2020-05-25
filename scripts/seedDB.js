@@ -83,7 +83,7 @@ const coursesSeed = [
         },
       },
     ],
-    enrolled: [],
+    ratings: [],
   },
 ];
 
@@ -95,8 +95,8 @@ const userSeed = {
   course: [],
 };
 
-db.User.remove({})
-  .then(() => db.User.collection.insertOne(userSeed))
+db.Course.remove({})
+  .then(() => db.Course.collection.insertMany(coursesSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

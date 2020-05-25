@@ -6,14 +6,9 @@ import Dashboard from "./pages/Dashboard";
 import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
-import axios from "axios";
 import NavBar from "./components/Navbar";
-<<<<<<< HEAD
 import API from "./utils/API";
-=======
 import Courseform from "./components/Courseform";
-
->>>>>>> b199aa01479193a9b17964ec2c7a43d928964f22
 
 class App extends Component {
   state = {
@@ -31,9 +26,7 @@ class App extends Component {
 
   getUser() {
     API.getUser().then((response) => {
-      console.log(response);
       if (response.data.user) {
-        console.log("user data in app.js " + response.data.user);
         this.setState({
           loggedIn: true,
           email: response.data.email,
@@ -45,7 +38,7 @@ class App extends Component {
         });
       }
     });
-  };
+  }
 
   onSubmit = (fields) => {
     console.log("App comp got: ", fields);

@@ -14,14 +14,10 @@ const courseSchema = new Schema(
       type: String,
       required: true,
     },
-    units: {
-      type: Schema.Types.ObjectId,
-      ref: "Unit",
-    },
-    enrolled: [
+    units: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Unit",
       },
     ],
   },
