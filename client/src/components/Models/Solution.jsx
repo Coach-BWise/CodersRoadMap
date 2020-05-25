@@ -48,10 +48,14 @@ export default function SimpleModal() {
         Click one of the follow links to get some help:
       </h2>
       <h4>Need a video to help? Click below:</h4>
-      <a href="https://www.youtube.com/watch?v=UB1O30fR-EE">Click me!</a>
+      <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="blank">
+        Click me!
+      </a>
       <br />
       <h4>Want to read helpful documentation? Click below:</h4>
-      <a href="https://www.w3schools.com/html/html_basic.asp">Click me!</a>
+      <a href="https://www.w3schools.com/html/html_basic.asp" target="blank">
+        Click me!
+      </a>
     </div>
   );
 

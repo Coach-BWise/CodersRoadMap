@@ -49,8 +49,8 @@ const activitySeed = [
   },
 ];
 
-db.Activity.remove({})
-  .then(() => db.Activity.collection.insertMany(activitySeed))
+db.Unit.remove({})
+  .then(() => db.Unit.collection.insertMany(unitSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserSignUp from "./pages/UserSignUp";
 import UserLogin from "./components/LoginForm";
 import Dashboard from "./pages/Dashboard";
+import Home from "./pages/HomePage";
 import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
 import axios from "axios";
 import NavBar from "./components/Navbar";
 import Courseform from "./components/Courseform";
-
+import Footer from "./components/Footer";
 
 class App extends Component {
   constructor() {
@@ -49,7 +50,7 @@ class App extends Component {
         });
       }
     });
-  };
+  }
 
   onSubmit = (fields) => {
     console.log("App comp got: ", fields);
@@ -65,11 +66,13 @@ class App extends Component {
             user={this.state.email}
           />
           <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Home} />
+
+            <Route exact path="/dashboard" render={() => <Dashboard />} />
             <Route exact path="/add" component={UserSignUp} />
             <Route
               exact
-              path="/"
+              path="/login"
               render={() => <UserLogin updateUser={this.updateUser} />}
             />
             <Route exact path="/html" component={HTML} />
@@ -81,6 +84,7 @@ class App extends Component {
             <Route exact path="/course" component={Courseform} />
             <Route path="*" component={NoMatch} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
