@@ -92,6 +92,10 @@ const userSeed = {
   course: ["5ecb4271abd92fef396791bc"],
 };
 
+// I was hard coding in an id of a created course for testing purposes
+// You will need to use whatever course _id is in your database for testing.
+// I also just created the user using the sign up form in the app because
+// I was having issues when I tried to create a user using the seed data
 db.User.findOneAndUpdate(
   { email: userSeed.email },
   { isEnrolled: userSeed.course }

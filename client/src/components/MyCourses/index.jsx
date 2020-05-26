@@ -96,7 +96,7 @@ class Dashboard extends Component {
             slidesToSlide={1}
             swipeable
           >
-            {this.state.units.map((unit) => (
+            {this.state.courses.map((courses) => (
               <Card
                 className={useStyles.root}
                 style={{

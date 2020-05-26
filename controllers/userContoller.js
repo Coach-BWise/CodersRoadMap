@@ -12,6 +12,10 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  // Since we have an array of courses that any given user can be enrolled in,
+  // We look for any courses that match the _id of the courses in the isEnrolled array
+  // We have access to this data by using req.user.isEnrolled
+  // The $in searches for the values in our array
   findUserCourses: function (req, res) {
     db.Course.find({ _id: { $in: req.user.isEnrolled } })
       .then((userCourses) => {

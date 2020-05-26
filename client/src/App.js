@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserSignUp from "./pages/UserSignUp";
 import UserLogin from "./components/LoginForm";
-import Dashboard from "./pages/Dashboard";
+import MyCourses from "./pages/MyCourses";
 import Home from "./pages/HomePage";
 import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
@@ -57,7 +57,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
 
-          <Route exact path="/dashboard" render={() => <Dashboard />} />
+          <Route exact path="/dashboard" render={() => <MyCourses />} />
           <Route exact path="/add" component={UserSignUp} />
           <Route
             exact

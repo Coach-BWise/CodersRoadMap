@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import DASHBOARD from "../components/Dashboard";
+import MyCourses from "../components/MyCourses";
 
-class Dashboard extends Component {
+class MyCourse extends Component {
   render() {
     return (
       <div>
-        <DASHBOARD />
+        <MyCourses />
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default MyCourse;
