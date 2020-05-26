@@ -49,12 +49,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class LoginForm extends Component {
-  state = {
-    hidden: true,
-    email: "",
-    password: "",
-    redirect: null,
-  };
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      redirect: null,
+    };
+
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -77,12 +82,18 @@ class LoginForm extends Component {
         password: this.state.password,
       };
       API.login(userInfo)
-        .then((res) => {
-          this.props.updateUser({
-            loggedIn: true,
-            email: res.data.email,
-          });
-          this.setState({ redirect: "true" });
+        .then((response) => {
+          if (response.status === 200) {
+            // update App.js state
+            this.props.updateUser({
+              loggedIn: true,
+              username: response.data.username,
+            });
+            // update the state to redirect to home
+            this.setState({
+              redirect: "true",
+            });
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -91,6 +102,7 @@ class LoginForm extends Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to="/dashboard" />;
+    } else {
     }
     return (
       <Container

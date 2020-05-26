@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserSignUp from "./pages/UserSignUp";
 import UserLogin from "./components/LoginForm";
-import Dashboard from "./pages/Dashboard";
+import MyCourses from "./pages/MyCourses";
 import Home from "./pages/HomePage";
 import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
@@ -11,6 +11,8 @@ import NavBar from "./components/Navbar";
 import API from "./utils/API";
 import Courseform from "./components/Courseform";
 import Footer from "./components/Footer";
+import CourseCatalog from "./components/CourseCatalog";
+import UnitForm from "./components/Unitform";
 
 class App extends Component {
   state = {
@@ -57,20 +59,21 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
 
-          <Route exact path="/dashboard" render={() => <Dashboard />} />
+          <Route exact path="/dashboard" render={() => <MyCourses />} />
           <Route exact path="/add" component={UserSignUp} />
           <Route
             exact
             path="/login"
             render={() => <UserLogin updateUser={this.updateUser} />}
           />
-          <Route exact path="/html" component={HTML} />
+          <Route exact path="/units" component={UnitForm} />
           <Route
             exact
             path="/html/1"
             render={() => <Html1 updateUser={this.updateUser} />}
           />
           <Route exact path="/course" component={Courseform} />
+          <Route exact path="/all-courses" component={CourseCatalog} />
           <Route path="*" component={NoMatch} />
         </Switch>
         <Footer />

@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import "./style.css";
 import API from "../../utils/API";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -18,22 +17,33 @@ const useStyles = makeStyles({
   },
 });
 
-class Dashboard extends Component {
+class CourseCatalog extends Component {
   state = {
     name: "",
     description: "",
-    units: [],
+    courses: [],
   };
 
+  // loads user courses when page loads
   componentDidMount() {
-    this.loadUnits();
+    this.loadCourses();
   }
 
-  loadUnits = () => {
-    API.getUnits()
+  componentWillUpdate() {
+    this.loadCourses();
+  }
+
+  loadCourses = () => {
+    API.getCourses()
       .then((res) =>
-        this.setState({ units: res.data, name: "", description: "" })
+        this.setState({ courses: res.data, name: "", description: "" })
       )
+      .catch((err) => console.log(err));
+  };
+
+  handleEnroll = (arg) => {
+    API.enrollUser(arg)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
 
@@ -94,7 +104,7 @@ class Dashboard extends Component {
             slidesToSlide={1}
             swipeable
           >
-            {this.state.units.map((unit) => (
+            {this.state.courses.map((course) => (
               <Card
                 className={useStyles.root}
                 style={{
@@ -106,21 +116,21 @@ class Dashboard extends Component {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    alt={unit.name}
+                    alt={course.name}
                     height="100"
-                    image={unit.image}
-                    title={unit.name}
+                    image={course.image}
+                    title={course.name}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {unit.name}
+                      {course.name}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="textSecondary"
                       component="p"
                     >
-                      {unit.description}
+                      {course.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -128,17 +138,10 @@ class Dashboard extends Component {
                   <Button
                     size="small"
                     color="primary"
-                    href={unit.activityLinks}
+                    href={course.activityLinks}
+                    onClick={this.handleEnroll.bind(this, course._id)}
                   >
-                    Activites
-                  </Button>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href={unit.link}
-                    target="_blank"
-                  >
-                    Learn More
+                    Enroll
                   </Button>
                 </CardActions>
               </Card>
@@ -150,4 +153,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default CourseCatalog;
