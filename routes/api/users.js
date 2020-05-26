@@ -22,6 +22,10 @@ router.get("/", (req, res, next) => {
 
 router.route("/my-courses").get(userController.findUserCourses);
 
+router.route("/enroll/:id").post(userController.enrollCourse);
+
+router.route("/:id").delete(userController.unenrollCourse);
+
 router.post("/logout", (req, res) => {
   if (req.user) {
     req.session.destroy();

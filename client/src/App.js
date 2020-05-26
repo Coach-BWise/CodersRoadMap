@@ -11,6 +11,8 @@ import NavBar from "./components/Navbar";
 import API from "./utils/API";
 import Courseform from "./components/Courseform";
 import Footer from "./components/Footer";
+import CourseCatalog from "./components/CourseCatalog";
+import UnitForm from "./components/Unitform";
 
 class App extends Component {
   state = {
@@ -64,13 +66,14 @@ class App extends Component {
             path="/login"
             render={() => <UserLogin updateUser={this.updateUser} />}
           />
-          <Route exact path="/html" component={HTML} />
+          <Route exact path="/units" component={UnitForm} />
           <Route
             exact
             path="/html/1"
             render={() => <Html1 updateUser={this.updateUser} />}
           />
           <Route exact path="/course" component={Courseform} />
+          <Route exact path="/all-courses" component={CourseCatalog} />
           <Route path="*" component={NoMatch} />
         </Switch>
         <Footer />

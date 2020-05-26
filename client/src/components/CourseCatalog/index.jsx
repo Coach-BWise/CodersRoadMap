@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import "./style.css";
 import API from "../../utils/API";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -18,12 +17,11 @@ const useStyles = makeStyles({
   },
 });
 
-class Dashboard extends Component {
+class CourseCatalog extends Component {
   state = {
     name: "",
     description: "",
     courses: [],
-    isEnrolled: [],
   };
 
   // loads user courses when page loads
@@ -31,18 +29,21 @@ class Dashboard extends Component {
     this.loadCourses();
   }
 
-  // sends request to API helper to load courses that the user has enrolled in
+  componentWillUpdate() {
+    this.loadCourses();
+  }
+
   loadCourses = () => {
-    API.getUserCourses()
+    API.getCourses()
       .then((res) =>
         this.setState({ courses: res.data, name: "", description: "" })
       )
       .catch((err) => console.log(err));
   };
 
-  handleUnenroll = (arg) => {
-    API.unenrollUser(arg)
-      .then((res) => this.forceUpdate())
+  handleEnroll = (arg) => {
+    API.enrollUser(arg)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
 
@@ -103,59 +104,48 @@ class Dashboard extends Component {
             slidesToSlide={1}
             swipeable
           >
-            {this.state.courses.length == 0 ? (
-              <div>
-                <h1>You are not currenly enrolled in any courses.</h1>
-                <a href="/all-courses"> View Courses</a>
-              </div>
-            ) : (
-              this.state.courses.map((course) => (
-                <Card
-                  className={useStyles.root}
-                  style={{
-                    marginTop: 30,
-                    marginLeft: 35,
-                    width: 400,
-                  }}
-                >
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt={course.name}
-                      height="100"
-                      image={course.image}
-                      title={course.name}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {course.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {course.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button size="small" color="primary" href="/">
-                      Units
-                    </Button>
-                    <Button
-                      size="small"
-                      color="primary"
-                      href={course.link}
-                      target="_blank"
-                      onClick={this.handleUnenroll.bind(this, course._id)}
+            {this.state.courses.map((course) => (
+              <Card
+                className={useStyles.root}
+                style={{
+                  marginTop: 30,
+                  marginLeft: 35,
+                  width: 400,
+                }}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt={course.name}
+                    height="100"
+                    image={course.image}
+                    title={course.name}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {course.name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
                     >
-                      Drop Course
-                    </Button>
-                  </CardActions>
-                </Card>
-              ))
-            )}
+                      {course.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    size="small"
+                    color="primary"
+                    href={course.activityLinks}
+                    onClick={this.handleEnroll.bind(this, course._id)}
+                  >
+                    Enroll
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
           </Carousel>
         </div>
       </div>
@@ -163,4 +153,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default CourseCatalog;

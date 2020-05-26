@@ -23,4 +23,25 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  enrollCourse: function (req, res) {
+    db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $push: { isEnrolled: req.params.id } },
+      { new: true }
+    )
+      .then((enrolled) => {
+        res.json(enrolled);
+      })
+      .catch((err) => console.log(err));
+  },
+  unenrollCourse: function (req, res) {
+    db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $pull: { isEnrolled: req.params.id } }
+    )
+      .then((enrolled) => {
+        res.json(enrolled);
+      })
+      .catch((err) => console.log(err));
+  },
 };
