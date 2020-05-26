@@ -1,0 +1,74 @@
+footer.main-footer {
+  padding: 3 0px 0;
+  background: #222;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+footer.main-footer p.social {
+  padding: 10px;
+}
+footer.main-footer p.social a {
+  margin-left: 10px;
+  color: #fff;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+  line-height: 45px;
+  font-size: 1.3rem;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+footer.main-footer p.social a i {
+  margin-top: 13px;
+}
+
+footer.main-footer p.social a.facebook {
+  background-color: #4460ae;
+}
+
+footer.main-footer p.social a.twitter {
+  background-color: #0c83f3;
+}
+
+footer.main-footer p.social a.github {
+  background-color: black;
+}
+
+footer.main-footer p {
+  margin: 0;
+  color: #eee;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+  footer.main-footer p {
+    padding: 10px;
+  }
+}
+
+/* Tooltip text */
+.wow .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - */
+  position: absolute;
+  z-index: 100000;
+  bottom: 100%;
+  margin-left: -60px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.wow:hover .tooltiptext {
+  visibility: visible;
+}

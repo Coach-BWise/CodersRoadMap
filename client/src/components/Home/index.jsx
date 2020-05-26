@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+
 import "./style.css";
 import API from "../../utils/API";
 import Carousel from "react-multi-carousel";
@@ -18,23 +19,22 @@ const useStyles = makeStyles({
   },
 });
 
-class Dashboard extends Component {
+class Home extends Component {
   state = {
     name: "",
     description: "",
-    courses: [],
+    units: [],
   };
 
-  // loads user courses when page loads
   componentDidMount() {
-    this.loadCourses();
+    this.loadBooks();
   }
 
-  // sends request to API helper to load courses that the user has enrolled in
-  loadCourses = () => {
-    API.getUserCourses()
-      .then((res) =>
-        this.setState({ courses: res.data, name: "", description: "" })
+  loadBooks = () => {
+    API.getUnits()
+      .then(
+        (res) => this.setState({ units: res.data, name: "", description: "" }),
+        console.log(this.state.units)
       )
       .catch((err) => console.log(err));
   };
@@ -42,6 +42,35 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <section
+          id="intro"
+          style={{
+            background: "url(assets/back.jpg) center center no-repeat",
+            backgroundSize: "cover",
+          }}
+          className="intro-section pb-2"
+        >
+          <div className="container text-center">
+            <h1 data-animate="fadeInDown" className="text-shadow mb-5">
+              CODER'S ROADMAP!
+            </h1>
+            <h2 data-animate="slideInUp" className="h3 text-shadow text-400">
+              WE CAN TEACH YOU.
+            </h2>
+            <p data-animate="slideInUp" className="h3 text-shadow text-400">
+              are you ready to learn?
+            </p>
+          </div>
+        </section>
+
+        <section className="pointer">
+          <h2 className="pointerTitle">
+            Explore our <br />
+            popular courses
+          </h2>
+
+          <div className="pointerArrow"></div>
+        </section>
         <div
           style={{
             paddingBottom: "30px",
@@ -152,4 +181,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default Home;
