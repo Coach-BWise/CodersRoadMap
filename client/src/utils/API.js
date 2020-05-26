@@ -7,8 +7,8 @@ export default {
   login: function (userData) {
     return axios.post("api/users/login", userData);
   },
-  getUnits: function () {
-    return axios.get("api/units");
+  getUnits: function (unitData) {
+    return axios.get("api/units/" + unitData);
   },
   getActivites: function () {
     return axios.get("api/activites/html");

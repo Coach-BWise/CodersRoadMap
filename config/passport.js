@@ -65,9 +65,9 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (user, done) {
   User.findOne({ _id: user._id }, (err, user) => {
-    console.log("*** Deserialize user, user:");
-    console.log(user);
-    console.log("--------------");
+    // console.log("*** Deserialize user, user:");
+    // console.log(user);
+    // console.log("--------------");
     done(null, user);
   });
 });

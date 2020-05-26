@@ -13,12 +13,14 @@ import Footer from "./components/Footer";
 import CourseCatalog from "./components/CourseCatalog";
 import UnitForm from "./components/Unitform";
 import ActivityForm from "./components/ActivityForm";
+import Unit from "./components/Units";
 
 class App extends Component {
   state = {
     loggedIn: false,
     email: null,
     isInstructor: false,
+    course: null,
   };
 
   componentDidMount() {
@@ -73,7 +75,8 @@ class App extends Component {
             path="/login"
             render={() => <UserLogin updateUser={this.updateUser} />}
           />
-          <Route exact path="/units" component={UnitForm} />
+          <Route exact path="/unit" component={UnitForm} />
+          <Route exact path="/units" component={Unit} />
           <Route exact path="/activites" component={ActivityForm} />
           <Route
             exact

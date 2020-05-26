@@ -11,9 +11,11 @@
     "jquery": "^3.5.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "plyr": "^3.6.2",
     "popper.js": "^1.16.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-player": "^2.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1"
   },
