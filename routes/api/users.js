@@ -20,6 +20,8 @@ router.get("/", (req, res, next) => {
   }
 });
 
+router.route("/my-courses").get(userController.findUserCourses);
+
 router.post("/logout", (req, res) => {
   if (req.user) {
     req.session.destroy();

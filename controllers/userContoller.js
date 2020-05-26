@@ -12,4 +12,11 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findUserCourses: function (req, res) {
+    db.Course.find({ _id: { $in: req.user.isEnrolled } })
+      .then((userCourses) => {
+        res.json(userCourses);
+      })
+      .catch((err) => console.log(err));
+  },
 };

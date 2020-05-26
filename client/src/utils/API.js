@@ -19,4 +19,7 @@ export default {
   createCourse: function (courseData) {
     return axios.post("api/course/create", courseData);
   },
+  getUserCourses: function (userData) {
+    return axios.get("api/users/my-courses");
+  },
 };

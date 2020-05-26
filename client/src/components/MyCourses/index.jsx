@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import NavBar from "../Navbar";
-import "../Dashboard/style.css";
+import "./style.css";
 import API from "../../utils/API";
 
 const useStyles = makeStyles({
@@ -21,17 +21,19 @@ class Dashboard extends Component {
   state = {
     name: "",
     description: "",
-    units: [],
+    courses: [],
   };
 
+  // loads user courses when page loads
   componentDidMount() {
-    this.loadUnits();
+    this.loadCourses();
   }
 
-  loadUnits = () => {
-    API.getUnits()
+  // sends request to API helper to load courses that the user has enrolled in
+  loadCourses = () => {
+    API.getUserCourses()
       .then((res) =>
-        this.setState({ units: res.data, name: "", description: "" })
+        this.setState({ courses: res.data, name: "", description: "" })
       )
       .catch((err) => console.log(err));
   };
@@ -48,7 +50,7 @@ class Dashboard extends Component {
           }}
           className="rowC"
         >
-          {this.state.units.map((unit) => (
+          {this.state.courses.map((unit) => (
             <Card
               className={useStyles.root}
               style={{
@@ -56,14 +58,8 @@ class Dashboard extends Component {
                 width: 400,
               }}
             >
+              {/* updated card information  */}
               <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt={unit.name}
-                  height="100"
-                  image={unit.image}
-                  title={unit.name}
-                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {unit.name}
@@ -78,6 +74,7 @@ class Dashboard extends Component {
                 </CardContent>
               </CardActionArea>
               <CardActions>
+                {/* these buttons do not go anywhere yet, need to map them we the user adds activites to the course */}
                 <Button size="small" color="primary" href={unit.activityLinks}>
                   Go To Activites
                 </Button>

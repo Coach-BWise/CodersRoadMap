@@ -88,17 +88,16 @@ const coursesSeed = [
 ];
 
 const userSeed = {
-  firstName: "Trevor",
-  lastName: "Handley",
-  email: "test@gmail.com",
-  password: "0215",
-  course: [],
+  email: "marketing@southernoaksinnstaug.com",
+  course: ["5ecb4271abd92fef396791bc"],
 };
 
-db.Course.remove({})
-  .then(() => db.Course.collection.insertMany(coursesSeed))
+db.User.findOneAndUpdate(
+  { email: userSeed.email },
+  { isEnrolled: userSeed.course }
+)
   .then((data) => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data);
     process.exit(0);
   })
   .catch((err) => {

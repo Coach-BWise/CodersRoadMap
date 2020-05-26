@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserSignUp from "./pages/UserSignUp";
 import UserLogin from "./components/LoginForm";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/MyCourses";
 import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
@@ -67,7 +67,8 @@ class App extends Component {
               path="/html/1"
               render={() => <Html1 updateUser={this.updateUser} />}
             />
-            <Route exact path="/course" component={Courseform} />
+            <Route exact path="/add-course" component={Courseform} />
+            <Route exact path="/course-catalog" component={Courseform} />
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>
