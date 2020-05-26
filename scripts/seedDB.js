@@ -4,6 +4,43 @@ const db = require("../models");
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/codersroadmap"
 );
+const coursesSeed = [
+  {
+    name: "HTML for Beginners",
+    description:
+      "Intro class to HTML for people with little to no coding experience.",
+    units: [
+      {
+        name: "Unit 1 - HTML Basics",
+        description: "HTML basics",
+        links: "https://www.w3schools.com/html/",
+        activites: [
+          {
+            name: "Activity 1",
+            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+            resources: "https://www.w3schools.com/html/html_basic.asp",
+          },
+          {
+            name: "Activity 1",
+            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+            resources: "https://www.w3schools.com/html/html_basic.asp",
+          },
+        ],
+      },
+      {
+        name: "Unit 2 - CSS Basics",
+        description: "CSS basics",
+        links: "https://www.w3schools.com/css/",
+        activites: {
+          name: "Activity 1",
+          videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+          resources: "https://www.w3schools.com/html/html_basic.asp",
+        },
+      },
+    ],
+    ratings: [],
+  },
+];
 
 const unitSeed = [
   {
@@ -46,44 +83,6 @@ const activitySeed = [
     name: "Activity 3",
     helperLink: "https://www.youtube.com/watch?v=UB1O30fR-EE",
     activityLinks: "/html/3",
-  },
-];
-
-const coursesSeed = [
-  {
-    name: "HTML for Beginners",
-    description:
-      "Intro class to HTML for people with little to no coding experience.",
-    units: [
-      {
-        name: "Unit 1 - HTML Basics",
-        description: "HTML basics",
-        links: "https://www.w3schools.com/html/",
-        activites: [
-          {
-            name: "Activity 1",
-            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
-            resources: "https://www.w3schools.com/html/html_basic.asp",
-          },
-          {
-            name: "Activity 1",
-            videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
-            resources: "https://www.w3schools.com/html/html_basic.asp",
-          },
-        ],
-      },
-      {
-        name: "Unit 2 - CSS Basics",
-        description: "CSS basics",
-        links: "https://www.w3schools.com/css/",
-        activites: {
-          name: "Activity 1",
-          videos: "https://www.youtube.com/watch?v=UB1O30fR-EE",
-          resources: "https://www.w3schools.com/html/html_basic.asp",
-        },
-      },
-    ],
-    ratings: [],
   },
 ];
 

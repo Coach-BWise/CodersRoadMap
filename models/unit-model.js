@@ -18,7 +18,11 @@ const unitSchema = new Schema(
       type: String,
       required: true,
     },
-    activites: [
+    course: {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+    activities: [
       {
         type: Schema.Types.ObjectId,
         ref: "Activity",
