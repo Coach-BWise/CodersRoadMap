@@ -137,10 +137,37 @@ const activitySeed = [
   },
 ];
 
-const userSeed = {
-  email: "marketing@southernoaksinnstaug.com",
-  course: ["5ecb4271abd92fef396791bc"],
-};
+const userSeed = [
+  {
+    _id: ObjectId("5ecd6c0c298614ffe1cc1b02"),
+    firstName: "Owais",
+    lastName: "Leech",
+    email: "Owais@gmail.com",
+    password: "$2a$10$Ca.8wfQziLGNI/fxuafvLOUabLZqVa6Rs.iaVU4WHDW2VrU55yZsK",
+  },
+  {
+    _id: ObjectId("5ecd6bf9298614ffe1cc1b01"),
+    isInstructor: false,
+    isEnrolled: [],
+    createdCourses: [],
+    firstName: "Cassius",
+    lastName: "Clay",
+    email: "Cassius@gmail.com",
+    password: "$2a$10$fVG4/OYf6.4WB90Nf.k7y.PNO4TAihD21DnSifeg8Yr5cLYGJQuA2",
+    __v: 0,
+  },
+  {
+    _id: ObjectId("5ecd6bb8298614ffe1cc1aff"),
+    isInstructor: false,
+    isEnrolled: [],
+    createdCourses: [],
+    firstName: "Mary",
+    lastName: "Beth",
+    email: "mbeth@gmail.com",
+    password: "$2a$10$I3nh7SCO4MMcljM/6IbezuLELj4HcgnWEFw2CC9WX/mKjNnelNr06",
+    __v: 0,
+  },
+];
 
 // I was hard coding in an id of a created course for testing purposes
 // You will need to use whatever course _id is in your database for testing.
