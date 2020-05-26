@@ -14,6 +14,12 @@ const userSchema = new Schema({
       ref: "Course",
     },
   ],
+  createdCourses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 userSchema.methods.generateHash = function (password) {

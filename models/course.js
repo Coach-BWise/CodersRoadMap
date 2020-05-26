@@ -14,12 +14,20 @@ const courseSchema = new Schema(
       type: String,
       required: true,
     },
-    units: [
+    activites: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Unit",
+        ref: "Activity",
       },
     ],
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    image: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

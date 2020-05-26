@@ -6,6 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import "../HTMLActivites1/style.css";
 
 const useStyles = makeStyles({
   root: {
@@ -18,15 +19,7 @@ export default function ImgMediaCard() {
 
   return (
     <div>
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-        className="rowC"
-      >
+      <div className="rowC">
         {/* Activity 1 Card */}
         <Card className={classes.root}>
           <CardActionArea>
@@ -35,31 +28,22 @@ export default function ImgMediaCard() {
                 Your Challenge:
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                In a new HTML file, create the basic structure of an HTML
-                document and include the following in it:
+                You will create an Express calculator application with one get
+                route that is able to take in three parameters: an operation and
+                two numbers.
               </Typography>
               <br />
               <Typography variant="body2" color="textSecondary" component="li">
-                DOCTYPE declaration
+                There are four operation values which a user may use: addition,
+                subtraction, multiplication, and division.
               </Typography>
               <Typography variant="body2" color="textSecondary" component="li">
-                Head tag with a title tag
+                When the route is hit, your browser should display the result of
+                the math operation.
               </Typography>
               <Typography variant="body2" color="textSecondary" component="li">
-                H1 tag with a title of your choice
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="li">
-                Embed an image
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="li">
-                One link that is target="_blank" so that it opens a new tab when
-                clicked on
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="li">
-                A second link that is bold.
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="li">
-                A third link that is a placeholder so it goes nowhere.
+                For example, when the user goes to the url
+                http://localhost:3000/add/10/1, the page should display 11.
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -71,18 +55,11 @@ export default function ImgMediaCard() {
             <Button
               size="small"
               color="primary"
-              href="https://thandley19.github.io/html-activites-1/solution.html"
+              href="https://github.com/UCF-Coding-Boot-Camp/UCF-VIRT-FSF-PT-11-2019-U-LOL/tree/master/Unit-14-handlebars/01-Activities/01-ExpressCalculator/Solved"
               target="_blank"
+              id="solution"
             >
               View Solution
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://github.com/THandley19/html-activites-1/blob/master/solution.html"
-              target="_blank"
-            >
-              View Source Code
             </Button>
           </CardActions>
         </Card>

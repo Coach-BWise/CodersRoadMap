@@ -13,19 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -50,10 +37,16 @@ export class CourseForm extends Component {
   state = {
     name: "",
     description: "",
+    image: "",
     units: [],
-    ratings: [],
+    user: {},
     redirect: null,
+    course: "",
   };
+
+  componentDidMount() {
+    this.getUser();
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -62,19 +55,25 @@ export class CourseForm extends Component {
     });
   };
 
+  getUser() {
+    API.getUser().then((res) => this.setState({ user: res.data }));
+  }
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     API.createCourse({
       name: this.state.name,
       description: this.state.description,
+      creator: this.state.user.user._id,
+      image: this.state.image,
     })
-      .then((res) => this.setState({ redirect: "true" }))
+      .then((res) => this.setState({ redirect: "true" }, { course: res._id }))
       .catch((err) => console.log(err));
   };
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/dashboard" />;
+      return <Redirect to="/all-courses" course={this.state.course} />;
     }
 
     return (
@@ -124,6 +123,20 @@ export class CourseForm extends Component {
                   autoComplete="description"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="image"
+                  value={this.state.image}
+                  onChange={this.handleInputChange}
+                  defaultValue={this.state.image}
+                  name="image"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="image"
+                  label="Course image"
+                />
+              </Grid>
             </Grid>
             <br />
             <Button
@@ -138,9 +151,6 @@ export class CourseForm extends Component {
             </Button>
           </form>
         </div>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
       </Container>
     );
   }

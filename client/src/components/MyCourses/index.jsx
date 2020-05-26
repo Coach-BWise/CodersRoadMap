@@ -46,6 +46,12 @@ class Dashboard extends Component {
       .catch((err) => console.log(err));
   };
 
+  handleUnits = (arg) => {
+    API.getUnits(arg)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   render() {
     const loggedIn = this.props.loggedIn;
     return (
@@ -143,7 +149,12 @@ class Dashboard extends Component {
                         </CardContent>
                       </CardActionArea>
                       <CardActions>
-                        <Button size="small" color="primary" href="/">
+                        <Button
+                          size="small"
+                          color="primary"
+                          href="/units"
+                          onClick={this.handleUnits.bind(this, course._id)}
+                        >
                           Units
                         </Button>
                         <Button

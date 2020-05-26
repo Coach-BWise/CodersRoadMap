@@ -15,19 +15,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        CodersRoadMap
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -87,7 +74,7 @@ class LoginForm extends Component {
             // update App.js state
             this.props.updateUser({
               loggedIn: true,
-              username: response.data.username,
+              email: response.data.email,
             });
             // update the state to redirect to home
             this.setState({
@@ -171,9 +158,6 @@ class LoginForm extends Component {
             </Grid>
           </Grid>
         </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
       </Container>
     );
   }

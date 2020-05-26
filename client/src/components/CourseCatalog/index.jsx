@@ -10,10 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import API from "../../utils/API";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import ReactPlayer from "react-player";
 
 const useStyles = makeStyles({
   root: {
-    width: 400,
+    maxwidth: 400,
   },
 });
 
@@ -48,6 +49,7 @@ class CourseCatalog extends Component {
   };
 
   render() {
+    console.log(this.state.courses);
     return (
       <div>
         <div
@@ -115,9 +117,12 @@ class CourseCatalog extends Component {
                   <CardMedia
                     component="img"
                     alt={course.name}
-                    height="100"
+                    style={{
+                      maxHeight: 166,
+                    }}
                     image={course.image}
                     title={course.name}
+                    className="img-fluid"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -128,7 +133,15 @@ class CourseCatalog extends Component {
                       color="textSecondary"
                       component="p"
                     >
-                      {course.description}
+                      Taught by: {course.creator.firstName}{" "}
+                      {course.creator.lastName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Description: {course.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

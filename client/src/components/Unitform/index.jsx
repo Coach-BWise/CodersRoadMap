@@ -49,6 +49,7 @@ export class UnitForm extends Component {
     name: "",
     description: "",
     units: [],
+    course: null,
     ratings: [],
     redirect: null,
   };
@@ -59,6 +60,10 @@ export class UnitForm extends Component {
       [name]: value,
     });
   };
+
+  getUser() {
+    API.getUser().then((res) => this.setState({ course: res.data }));
+  }
 
   handleFormSubmit = (event) => {
     event.preventDefault();

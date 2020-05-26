@@ -47,10 +47,12 @@ class NavBar extends Component {
     }
     const loggedIn = this.props.loggedIn;
     return (
+
       <header className="header">
         <nav className="navbar navbar-expand-lg fixed-top">
           <div className="container">
-            <a href="/" className="navbar-brand scrollTo">
+            <a href="/dashboard" className="navbar-brand scrollTo">
+
               <img
                 className="img-fluid"
                 src={process.env.PUBLIC_URL + "/assets/logo.png"}
@@ -84,8 +86,10 @@ class NavBar extends Component {
                         >
                           Courses
                         </a>
+
                         <div className="dropdown-content">
                           <a href="/dashboard">My Courses</a>
+
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>
@@ -124,8 +128,10 @@ class NavBar extends Component {
                         >
                           Courses
                         </a>
+
                         <div className="dropdown-content">
-                          <a href="/dashboard">My Courses</a>
+                          <a href="/dashboard">Enrolled Courses</a>
+
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>
