@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import HTML from "../components/HTMLActivites";
+import Units from "../components/Units";
 
-class Html extends Component {
+class Unit extends Component {
   render() {
     return (
       <div>
-        <HTML />
+        <Units />
       </div>
     );
   }
 }
 
-export default Html;
+export default Unit;

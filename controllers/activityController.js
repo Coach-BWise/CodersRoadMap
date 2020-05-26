@@ -1,10 +1,9 @@
 const db = require("../models");
 
 module.exports = {
-  findAll: function (req, res) {
-    db.Activity.find(req.query)
-      .sort({ date: -1 })
-      .then((dbModel) => res.json(dbModel))
+  create: function (req, res) {
+    db.Activity.create(req.body)
+      .then((newActivity) => res.json(newActivity))
       .catch((err) => res.status(422).json(err));
   },
 };

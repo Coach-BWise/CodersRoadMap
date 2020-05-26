@@ -3,15 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import "./style.css";
+import API from "../../utils/API";
 
 class NavBar extends Component {
-  constructor() {
-    super();
-    this.state = {
-      redirect: null,
-    };
-    this.logout = this.logout.bind(this);
-  }
+  state = {
+    redirect: null,
+    userData: {},
+  };
+  logout = this.logout.bind(this);
 
   logout(event) {
     event.preventDefault();
@@ -25,12 +24,28 @@ class NavBar extends Component {
         console.log("Logout error " + error);
       });
   }
+
+  componentDidMount() {
+    this.getUser();
+  }
+  getUser() {
+    API.getUser().then((res) => this.setState({ userData: res.data }));
+  }
+
+  instructor() {
+    axios
+      .post("api/users/instructor")
+      .then((res) => this.getUser)
+      .catch((error) => {
+        console.log("Logout error " + error);
+      });
+  }
+
   render() {
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
     const loggedIn = this.props.loggedIn;
-
     return (
       <header class="header">
         <nav class="navbar navbar-expand-lg fixed-top">
@@ -54,43 +69,83 @@ class NavBar extends Component {
             </button>
             {loggedIn ? (
               <div id="navbarcollapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a href="/" class="nav-link link-scroll">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <div class="dropdown">
-                      <a
-                        href="#references"
-                        class="nav-link link-scroll dropbtn"
-                      >
-                        Courses
+                {!this.state.userData.user.isInstructor ? (
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/" class="nav-link link-scroll">
+                        Home
                       </a>
-                      <div class="dropdown-content">
-                        <a href="/dashboard">My Courses</a>
-                        <a href="/all-courses">All Courses</a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="dropdown">
+                        <a
+                          href="#references"
+                          class="nav-link link-scroll dropbtn"
+                        >
+                          Courses
+                        </a>
+                        <div class="dropdown-content">
+                          <a href="/dashboard">My Courses</a>
+                          <a href="/all-courses">All Courses</a>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link link-scroll">
-                      Become An Instructor
-                      <br />
-                      Add A Course
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link link-scroll"
-                      href="/login"
-                      onClick={this.logout}
-                    >
-                      Logout
-                    </a>
-                  </li>
-                </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="/dashboard"
+                        class="nav-link link-scroll"
+                        onClick={this.instructor}
+                      >
+                        Become An Instructor
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link link-scroll"
+                        href="/login"
+                        onClick={this.logout}
+                      >
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
+                ) : (
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/" class="nav-link link-scroll">
+                        Home
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="dropdown">
+                        <a
+                          href="#references"
+                          class="nav-link link-scroll dropbtn"
+                        >
+                          Courses
+                        </a>
+                        <div class="dropdown-content">
+                          <a href="/dashboard">My Courses</a>
+                          <a href="/all-courses">All Courses</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/course" class="nav-link link-scroll">
+                        Create a Course
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link link-scroll"
+                        href="/login"
+                        onClick={this.logout}
+                      >
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
+                )}
               </div>
             ) : (
               <div id="navbarcollapse" class="collapse navbar-collapse">

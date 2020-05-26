@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-class HTMLActivites extends Component {
+class Units extends Component {
   state = {
     name: "",
     activites: [],
@@ -81,4 +81,4 @@ class HTMLActivites extends Component {
   }
 }
 
-export default HTMLActivites;
+export default Units;

@@ -1,6 +1,7 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
+const User = require("../models/user");
 
 // user signup
 passport.use(
@@ -63,7 +64,12 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user, done) {
-  done(null, user);
+  User.findOne({ _id: user._id }, (err, user) => {
+    console.log("*** Deserialize user, user:");
+    console.log(user);
+    console.log("--------------");
+    done(null, user);
+  });
 });
 
 module.exports = passport;
