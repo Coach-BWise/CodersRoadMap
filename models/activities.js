@@ -17,6 +17,10 @@ const unitSchema = new Schema(
     resources: {
       type: String,
     },
+    unit: {
+      type: Schema.Types.ObjectId,
+      ref: "Unit",
+    },
   },
   {
     timestamps: true,
