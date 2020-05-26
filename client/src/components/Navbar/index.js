@@ -50,7 +50,7 @@ class NavBar extends Component {
       <header class="header">
         <nav class="navbar navbar-expand-lg fixed-top">
           <div class="container">
-            <a href="/" class="navbar-brand scrollTo">
+            <a href="/dashboard" class="navbar-brand scrollTo">
               <img
                 className="img-fluid"
                 src={process.env.PUBLIC_URL + "/assets/logo.png"}
@@ -85,7 +85,7 @@ class NavBar extends Component {
                           Courses
                         </a>
                         <div class="dropdown-content">
-                          <a href="/dashboard">My Courses</a>
+                          <a href="/dashboard">Enrolled Courses</a>
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>
@@ -125,7 +125,7 @@ class NavBar extends Component {
                           Courses
                         </a>
                         <div class="dropdown-content">
-                          <a href="/dashboard">My Courses</a>
+                          <a href="/dashboard">Enrolled Courses</a>
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>

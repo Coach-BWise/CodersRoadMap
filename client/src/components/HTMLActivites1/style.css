@@ -2,3 +2,6 @@
   display: flex;
   flex-direction: row;
 }
+#solution {
+  margin-bottom: 60px;
+}
