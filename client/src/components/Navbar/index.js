@@ -47,10 +47,12 @@ class NavBar extends Component {
     }
     const loggedIn = this.props.loggedIn;
     return (
-      <header class="header">
-        <nav class="navbar navbar-expand-lg fixed-top">
-          <div class="container">
-            <a href="/dashboard" class="navbar-brand scrollTo">
+
+      <header className="header">
+        <nav className="navbar navbar-expand-lg fixed-top">
+          <div className="container">
+            <a href="/dashboard" className="navbar-brand scrollTo">
+
               <img
                 className="img-fluid"
                 src={process.env.PUBLIC_URL + "/assets/logo.png"}
@@ -63,45 +65,47 @@ class NavBar extends Component {
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
-              class="navbar-toggler navbar-toggler-right"
+              className="navbar-toggler navbar-toggler-right"
             >
-              <span class="fa fa-bars"></span>
+              <span className="fa fa-bars"></span>
             </button>
             {loggedIn ? (
-              <div id="navbarcollapse" class="collapse navbar-collapse">
+              <div id="navbarcollapse" className="collapse navbar-collapse">
                 {!this.state.userData.user.isInstructor ? (
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a href="/" class="nav-link link-scroll">
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                      <a href="/" className="nav-link link-scroll">
                         Home
                       </a>
                     </li>
-                    <li class="nav-item">
-                      <div class="dropdown">
+                    <li className="nav-item">
+                      <div className="dropdown">
                         <a
                           href="#references"
-                          class="nav-link link-scroll dropbtn"
+                          className="nav-link link-scroll dropbtn"
                         >
                           Courses
                         </a>
-                        <div class="dropdown-content">
-                          <a href="/dashboard">Enrolled Courses</a>
+
+                        <div className="dropdown-content">
+                          <a href="/dashboard">My Courses</a>
+
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                       <a
                         href="/dashboard"
-                        class="nav-link link-scroll"
+                        className="nav-link link-scroll"
                         onClick={this.instructor}
                       >
                         Become An Instructor
                       </a>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                       <a
-                        class="nav-link link-scroll"
+                        className="nav-link link-scroll"
                         href="/login"
                         onClick={this.logout}
                       >
@@ -110,34 +114,36 @@ class NavBar extends Component {
                     </li>
                   </ul>
                 ) : (
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a href="/" class="nav-link link-scroll">
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                      <a href="/" className="nav-link link-scroll">
                         Home
                       </a>
                     </li>
-                    <li class="nav-item">
-                      <div class="dropdown">
+                    <li className="nav-item">
+                      <div className="dropdown">
                         <a
                           href="#references"
-                          class="nav-link link-scroll dropbtn"
+                          className="nav-link link-scroll dropbtn"
                         >
                           Courses
                         </a>
-                        <div class="dropdown-content">
+
+                        <div className="dropdown-content">
                           <a href="/dashboard">Enrolled Courses</a>
+
                           <a href="/all-courses">All Courses</a>
                         </div>
                       </div>
                     </li>
-                    <li class="nav-item">
-                      <a href="/course" class="nav-link link-scroll">
+                    <li className="nav-item">
+                      <a href="/course" className="nav-link link-scroll">
                         Create a Course
                       </a>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                       <a
-                        class="nav-link link-scroll"
+                        className="nav-link link-scroll"
                         href="/login"
                         onClick={this.logout}
                       >
@@ -148,20 +154,23 @@ class NavBar extends Component {
                 )}
               </div>
             ) : (
-              <div id="navbarcollapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a href="/" class="nav-link link-scroll">
+              <div id="navbarcollapse" className="collapse navbar-collapse">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <a href="/" className="nav-link link-scroll">
                       Home
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="/all-courses" class="nav-link link-scroll dropbtn">
+                  <li className="nav-item">
+                    <a
+                      href="/all-courses"
+                      className="nav-link link-scroll dropbtn"
+                    >
                       Courses
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="/login" class="nav-link link-scroll">
+                  <li className="nav-item">
+                    <a href="/login" className="nav-link link-scroll">
                       Login
                     </a>
                   </li>

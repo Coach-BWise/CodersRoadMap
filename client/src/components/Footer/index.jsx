@@ -23,7 +23,7 @@ class Footer extends Component {
                   data-wow-delay="0.6s"
                   className="external github wow fadeInUp"
                 >
-                  <i class="fa fa-github fa-lg" />
+                  <i className="fa fa-github fa-lg" />
                   <span className="tooltiptext">Github</span>
                 </a>
 
