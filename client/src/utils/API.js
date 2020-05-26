@@ -13,6 +13,9 @@ export default {
   getActivites: function () {
     return axios.get("api/activites/html");
   },
+  createActivity: function (activityData) {
+    return axios.post("api/activites", activityData);
+  },
   getUser: function () {
     return axios.get("api/users/");
   },

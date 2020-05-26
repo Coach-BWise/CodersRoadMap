@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserSignUp from "./pages/UserSignUp";
 import UserLogin from "./components/LoginForm";
-import MyCourses from "./pages/MyCourses";
+import MyCourses from "./components/MyCourses";
 import Home from "./pages/HomePage";
-import HTML from "./pages/HTML_Activites";
 import Html1 from "./pages/HTML1";
 import NoMatch from "./pages/NoMatch";
 import NavBar from "./components/Navbar";
@@ -13,11 +12,13 @@ import Courseform from "./components/Courseform";
 import Footer from "./components/Footer";
 import CourseCatalog from "./components/CourseCatalog";
 import UnitForm from "./components/Unitform";
+import ActivityForm from "./components/ActivityForm";
 
 class App extends Component {
   state = {
     loggedIn: false,
     email: null,
+    isInstructor: false,
   };
 
   componentDidMount() {
@@ -34,6 +35,7 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           email: response.data.email,
+          isInstructor: response.data.isInstructor,
         });
       } else {
         this.setState({
@@ -53,13 +55,18 @@ class App extends Component {
       <Router>
         <NavBar
           updateUser={this.updateUser}
-          loggedIn={this.state.loggedIn}
+          isInstructor={this.state.loggedIn}
           user={this.state.email}
+          loggedIn={this.state.loggedIn}
         />
         <Switch>
           <Route exact path="/" component={Home} />
 
-          <Route exact path="/dashboard" render={() => <MyCourses />} />
+          <Route
+            exact
+            path="/dashboard"
+            render={() => <MyCourses loggedIn={this.state.loggedIn} />}
+          />
           <Route exact path="/add" component={UserSignUp} />
           <Route
             exact
@@ -67,6 +74,7 @@ class App extends Component {
             render={() => <UserLogin updateUser={this.updateUser} />}
           />
           <Route exact path="/units" component={UnitForm} />
+          <Route exact path="/activites" component={ActivityForm} />
           <Route
             exact
             path="/html/1"

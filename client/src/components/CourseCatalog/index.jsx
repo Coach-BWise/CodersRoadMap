@@ -59,8 +59,6 @@ class CourseCatalog extends Component {
           <Carousel
             additionalTransfrom={0}
             arrows
-            autoPlay
-            autoPlaySpeed={3000}
             centerMode={false}
             className=""
             containerClass="container-with-dots"

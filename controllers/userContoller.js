@@ -44,4 +44,12 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  makeInstructor: function (req, res) {
+    console.log(req.user);
+    db.User.findOneAndUpdate({ _id: req.user._id }, { isInstructor: true })
+      .then((instructor) => {
+        res.json(instructor);
+      })
+      .catch((err) => console.log(err));
+  },
 };
